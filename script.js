@@ -1,21 +1,79 @@
-// Paper-0 Scissors-1 Rock-2
-// 0 win over 2
-// 1 win over 0
-// 2 win over 1
-// tie
+// Paper-0
+// Scissors-1
+// Rock-2
 
+
+//PROMT OF HOW MANY ROUNDS
+let rounds = prompt("How many rounds do you want to play?")
+
+//GLOBAL VARIABLES FOR SCISSORS AND WIN COUNTS
+const paperScissorsRock = ["Paper |", "Scissors ܓ", "Rock O"];
+let pWinCount = 0;
+let cWinCount = 0;
+
+//COMPUTER CHOICE
 const getComputerChoice = () => {
-  return Math.floor(Math.random() * 3);
-}
-console.log(getComputerChoice());
-const computerSelection = getComputerChoice();
+  let random = Math.floor(Math.random() * 3);
+  return paperScissorsRock[random];
+};
 
-const playerSelection = parseInt(prompt("Chose a number Paper - 0 Scissors - 1 or Rock - 2"))
-console.log(playerSelection);
-
-function playRound(computerSelection, playerSelection) {
-    // your code here!
+//PLAYER CHOICE
+const getPlayerSelection = () => {
+let playerSelection;
+let bon = 0;
+do {
+  playerSelection = prompt("Paper(|), Scissors(ܓ) or Rock(O)?:");
+  if (playerSelection.toLocaleLowerCase() == "paper") {
+    bon = 1;
+    playerSelection = paperScissorsRock[0];
+  } else if (playerSelection.toLocaleLowerCase() == "scissors") {
+    bon = 1;
+    playerSelection = paperScissorsRock[1];
+  } else if (playerSelection.toLocaleLowerCase() == "rock") {
+    bon = 1;
+    playerSelection = paperScissorsRock[2];
   }
-  
+} while (bon < 1);
+return playerSelection
+}
 
-console.log(playRound(playerSelection, computerSelection));
+//ONE ROUND
+function playRound(computerSelection, playerSelection) {
+  if (computerSelection == playerSelection) {
+    console.log("It is a draw!");
+  } else if (computerSelection == paperScissorsRock[0] && playerSelection == paperScissorsRock[1]) {
+    console.log("Player Wins");
+    pWinCount++;
+  } else if (computerSelection == paperScissorsRock[0] &&
+    playerSelection == paperScissorsRock[2]) {
+    console.log("Computer Wins");
+    cWinCount++;
+  } else if (computerSelection == paperScissorsRock[1] && playerSelection == paperScissorsRock[0]) {
+    console.log("Computer Wins");
+    cWinCount++;
+  } else if (computerSelection == paperScissorsRock[1] && playerSelection == paperScissorsRock[2]) {
+    console.log("Player Wins");
+    pWinCount++;
+  } else if (computerSelection == paperScissorsRock[2] && playerSelection == paperScissorsRock[0]) {
+    console.log("Player Wins");
+    pWinCount++;
+  } else {
+    console.log("Computer Wins");
+    cWinCount++;
+  }
+}
+
+//WHOLE GAME STARTER
+const playGame = () => {
+  for (let i = 0; i < rounds; i++) {
+    let computerSelection = getComputerChoice();
+    let playerSelection =  getPlayerSelection();
+    console.log("Computer: " + computerSelection);
+    console.log("Player: " + playerSelection);
+    playRound(computerSelection,playerSelection)
+  }
+}
+
+playGame()
+console.log(cWinCount + " " + pWinCount);
+cWinCount > pWinCount ? console.log("Computer is Ultimate Winner") : cWinCount == pWinCount ? console.log("Draw Game") : cWinCount < pWinCount ? console.log("Player is Ultimate Winner") : console.log("Computer is Ultimate Winner");
