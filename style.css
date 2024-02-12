@@ -2,10 +2,19 @@ body {
     background-color: #123456;
 }
 
-.container {
+.gameResult {
+    margin-top: 100px;
+    font-size: 2rem;
+    height: 200px;
     display: flex;
     justify-content: center;
-    height: 600px;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    height: 200px;
     align-items: center;
 }
 

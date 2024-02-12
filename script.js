@@ -51,65 +51,64 @@ const getPlayerChoice = () => {
     }
 }
 
+let result = document.querySelector(".gameResult")
+
+
 paper.addEventListener("click", function(){
   playerSelection = paperScissorsRock[0];
-  console.log(getComputerChoice());
-  console.log(playerSelection);
-  
+  let computerSelection = getComputerChoice();
+  playRound(computerSelection,playerSelection)
 });
 scissors.addEventListener("click", function(){
   playerSelection = paperScissorsRock[1];
-  console.log(getComputerChoice());
-  console.log(playerSelection);
-  
+  let computerSelection = getComputerChoice();
+  playRound(computerSelection,playerSelection)
 })
 rock.addEventListener("click", function(){
   playerSelection = paperScissorsRock[2];
-  console.log(getComputerChoice());
-  console.log(playerSelection);
-  
+  let computerSelection = getComputerChoice();
+  playRound(computerSelection,playerSelection)
 })
 
-
-// //ONE ROUND
-// function playRound(computerSelection, playerSelection) {
-//   if (computerSelection == playerSelection) {
-//     console.log("It is a draw!");
-//   } else if (
-//     computerSelection == paperScissorsRock[0] &&
-//     playerSelection == paperScissorsRock[1]
-//   ) {
-//     console.log("Player Wins");
-//     pWinCount++;
-//   } else if (
-//     computerSelection == paperScissorsRock[0] &&
-//     playerSelection == paperScissorsRock[2]
-//   ) {
-//     console.log("Computer Wins");
-//     cWinCount++;
-//   } else if (
-//     computerSelection == paperScissorsRock[1] &&
-//     playerSelection == paperScissorsRock[0]
-//   ) {
-//     console.log("Computer Wins");
-//     cWinCount++;
-//   } else if (
-//     computerSelection == paperScissorsRock[1] &&
-//     playerSelection == paperScissorsRock[2]
-//   ) {
-//     console.log("Player Wins");
-//     pWinCount++;
-//   } else if (
-//     computerSelection == paperScissorsRock[2] &&
-//     playerSelection == paperScissorsRock[0]
-//   ) {
-//     console.log("Player Wins");
-//     pWinCount++;
-//   } else {
-//     console.log("Computer Wins");
-//     cWinCount++;
-//   }
-// }
+//ONE ROUND
+function playRound(computerSelection, playerSelection) {
+  if (computerSelection == playerSelection) {
+    result.textContent = "It is a draw!";
+  } else if (
+    computerSelection == paperScissorsRock[0] &&
+    playerSelection == paperScissorsRock[1]
+  ) {
+    result.textContent = "Player Wins";
+    pWinCount++;
+  } else if (
+    computerSelection == paperScissorsRock[0] &&
+    playerSelection == paperScissorsRock[2]
+  ) {
+    result.textContent = "Computer Wins";
+    cWinCount++;
+  } else if (
+    computerSelection == paperScissorsRock[1] &&
+    playerSelection == paperScissorsRock[0]
+  ) {
+    result.textContent = "Computer Wins";
+    cWinCount++;
+  } else if (
+    computerSelection == paperScissorsRock[1] &&
+    playerSelection == paperScissorsRock[2]
+  ) {
+    result.textContent = "Player Wins";
+    pWinCount++;
+  } else if (
+    computerSelection == paperScissorsRock[2] &&
+    playerSelection == paperScissorsRock[0]
+  ) {
+    result.textContent = "Player Wins";
+    pWinCount++;
+  } else {
+    result.textContent = "Computer Wins";
+    cWinCount++;
+  }
+}
 
 // getComputerChoice();
 // getPlayerSelection();
