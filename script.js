@@ -58,16 +58,19 @@ paper.addEventListener("click", function(){
   playerSelection = paperScissorsRock[0];
   let computerSelection = getComputerChoice();
   playRound(computerSelection,playerSelection)
+  mainGame();
 });
 scissors.addEventListener("click", function(){
   playerSelection = paperScissorsRock[1];
   let computerSelection = getComputerChoice();
   playRound(computerSelection,playerSelection)
+  mainGame();
 })
 rock.addEventListener("click", function(){
   playerSelection = paperScissorsRock[2];
   let computerSelection = getComputerChoice();
   playRound(computerSelection,playerSelection)
+  mainGame();
 })
 
 //ONE ROUND
@@ -109,6 +112,24 @@ function playRound(computerSelection, playerSelection) {
     cWinCount++;
   }
 }
+
+let pWinCountOut = document.querySelector(".playerPoints");
+let cWinCountOut = document.querySelector(".computerPoints");
+
+const mainGame = () => {
+  pWinCountOut.textContent = pWinCount.toString();
+  cWinCountOut.textContent = cWinCount.toString();
+
+  if (cWinCount == 5) {
+    result.textContent = "Computer is Ultimate Winner"
+    cWinCount = 0;
+    pWinCount = 0;
+  } else if (pWinCount == 5) {
+    result.textContent = "Player is Ultimate Winner"
+    cWinCount = 0;
+    pWinCount = 0;
+  }
+};
 
 // getComputerChoice();
 // getPlayerSelection();
