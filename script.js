@@ -10,11 +10,11 @@ const paperScissorsRock = ["Paper |", "Scissors ܓ", "Rock O"];
 let pWinCount = 0;
 let cWinCount = 0;
 
-// //COMPUTER CHOICE
-// const getComputerChoice = () => {
-//   let random = Math.floor(Math.random() * 3);
-//   return paperScissorsRock[random];
-// };
+//COMPUTER CHOICE
+const getComputerChoice = () => {
+  let random = Math.floor(Math.random() * 3);
+  return paperScissorsRock[random];
+};
 
 // //PLAYER CHOICE
 // const getPlayerSelection = () => {
@@ -36,15 +36,39 @@ let cWinCount = 0;
 //   return playerSelection;
 // };
 
-let paper = document.querySelector("button");
-let scissors = document.querySelector("button")[1];
-let rock = document.querySelector("button")[2];
+let playerSelection;
+let paper = document.querySelector(".Paper");
+let scissors = document.querySelector(".Scissors");
+let rock = document.querySelector(".Rock");
 
-const getPlayeChoice = () => {
-  console.log("paper");
+const getPlayerChoice = () => {
+    if (paper) {
+      playerSelection = paperScissorsRock[0];
+    } else if (playerSelection.toLocaleLowerCase() == "scissors") {
+      playerSelection = paperScissorsRock[1];
+    } else if (playerSelection.toLocaleLowerCase() == "rock") {
+      playerSelection = paperScissorsRock[2];
+    }
 }
 
-paper.addEventListener("click", getPlayeChoice);
+paper.addEventListener("click", function(){
+  playerSelection = paperScissorsRock[0];
+  console.log(getComputerChoice());
+  console.log(playerSelection);
+  
+});
+scissors.addEventListener("click", function(){
+  playerSelection = paperScissorsRock[1];
+  console.log(getComputerChoice());
+  console.log(playerSelection);
+  
+})
+rock.addEventListener("click", function(){
+  playerSelection = paperScissorsRock[2];
+  console.log(getComputerChoice());
+  console.log(playerSelection);
+  
+})
 
 
 // //ONE ROUND
